@@ -54,7 +54,9 @@
       "../stories/**/*.stories.@(js|jsx|ts|tsx)"
     ],
   ```
+
   아래처럼 경로에서 stories 경로 제거 
+
   ```js
   module.exports = {
     "stories": [
@@ -72,4 +74,61 @@
 ---
 
 # Initialize server
+
+
+
+https://github.com/oncodev/cupfe
+
+
+
+
+
+크로마틱 추가해서 배포하기 : https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/
+
+깃헙액션 추가해서 배포하기 : https://budiirawan.com/how-to-publish-storybook-github-pages/
+
+
+7. Storybook 배포하기 
+
+7.0 깃허브 리포 Settings에서 pages에 페이지 활성화하기
+https://oncodev.github.io/cupfe/
+
+
+7.1 수동 배포하기
+- 깃허브 페이지에 수동으로 배포할때는 `yarn add gh-pages -D`
+- packages.json 에 deploy-storybook 추가
+
+```json
+"scripts": {
+  // ...
+  "build-storybook": "build-storybook",
+  "deploy-storybook": "gh-pages -d storybook-static",
+```
+
+다음과 같이 실행
+```bash
+$ yarn run build-storybook
+$ ls -alh storybook-static
+total 3.3M
+drwxr-xr-x 1 User 197121    0  7월  7 20:06 ./gh-pages)
+drwxr-xr-x 1 User 197121    0  7월  7 20:12 ../
+-rw-r--r-- 1 User 197121 146K  7월  7 20:06 142.bb7bf43fdd5fd1f24ad9.manager.bundle.js
+-rw-r--r-- 1 User 197121  227  7월  7 20:06 142.bb7bf43fdd5fd1f24ad9.manager.bundle.js.LICENSE.txt
+-rw-r--r-- 1 User 197121 2.0M  7월  7 20:06 295.c40d66457a3c5da08f74.manager.bundle.js0.2".
+-rw-r--r-- 1 User 197121  994  7월  7 20:06 860.8dcebab9433c411ba3ab.manager.bundle.js
+-rw-r--r-- 1 User 197121  33K  7월  7 18:17 favicon.ico
+-rw-r--r-- 1 User 197121 2.3K  7월  7 20:06 index.html
+...
+
+$ yarn run deploy-storybook
+```
+
+7.2 깃허브 액션으로 main에서 푸시 하면 스토리북 자동 배포하기
+
+- 브랜치 만들기 : `git checkout -b gh-pages`
+- 스토리북 빌드 : `yarn build-storybook`
+- 디렉토리 생성 : `.github/workflows/storybook.yml`
+
+
+
 
