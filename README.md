@@ -54,7 +54,9 @@
       "../stories/**/*.stories.@(js|jsx|ts|tsx)"
     ],
   ```
+
   아래처럼 경로에서 stories 경로 제거 
+
   ```js
   module.exports = {
     "stories": [
