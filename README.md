@@ -127,3 +127,10 @@ $ yarn run deploy-storybook
 - 디렉토리 생성 : `.github/workflows/storybook.yml`
 
 
+> 에러 메세지 : TypeError [ERR_INVALID_ARG_TYPE]: The "id" argument must be of type string. Received an instance of Object  
+> 댓글을 보고 스토리북 버전 6.5.9에서 6.5.5로 낮춰봄 : https://issuehunt.io/r/storybookjs/storybook/issues/18448
+
+https://www.codegrepper.com/code-examples/shell/typeerror+%5Berr_invalid_arg_type%5D%3A+the+%22id%22+argument+must+be+of+type+string.+received+function+app
+
+https://minemanemo.tistory.com/165
+
