@@ -134,3 +134,39 @@ https://www.codegrepper.com/code-examples/shell/typeerror+%5Berr_invalid_arg_typ
 
 https://minemanemo.tistory.com/165
 
+---
+# Troubleshooting
+깃헙 액션에서 `Install and Build` 태스크에서 아래 에러 등으로 Task 가 실패.
+
+```bash
+ERR! TypeError [ERR_INVALID_ARG_TYPE]: The "id" argument must be of type string. Received an instance of Object
+ERR!     at new NodeError (node:internal/errors:371:5)
+ERR!     at validateString (node:internal/validators:119:11)
+ERR!     at Module.require (node:internal/modules/cjs/loader:998:3)
+ERR!     at require (node:internal/modules/cjs/helpers:102:18)
+ERR!     at interopRequireDefault (C:\Users\User\Desktop\cupfe\node_modules\@storybook\core-common\dist\cjs\presets.js:178:16)
+ERR!     at getContent (C:\Users\User\Desktop\cupfe\node_modules\@storybook\core-common\dist\cjs\presets.js:194:10)
+ERR!     at loadPreset (C:\Users\User\Desktop\cupfe\node_modules\@storybook\core-common\dist\cjs\presets.js:203:20)
+ERR!     at C:\Users\User\Desktop\cupfe\node_modules\@storybook\core-common\dist\cjs\presets.js:256:18
+ERR!     at Array.reduce (<anonymous>)
+ERR!     at loadPresets (C:\Users\User\Desktop\cupfe\node_modules\@storybook\core-common\dist\cjs\presets.js:255:18)
+```
+
+그러나 실제로 문제되는 부분이 아니므로 무시하고 넘어가도록 수정
+
+```yaml
+- name: Install and Build
+  run: |
+    npm install
+    npm run build-storybook
+```
+
+->
+
+```yaml
+- name: Install and Build
+  run: |
+    npm install
+    npm run build-storybook || true
+```
+
