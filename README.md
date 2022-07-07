@@ -1,24 +1,26 @@
 # CUP FE 작업 계획
 
-1. next.js, TS, SCSS 프로젝트 생성 (하위폴더 없이 설치)
-  yarn create next-app --typescript .
-  yarn add scss
+1. next.js, TS, SCSS 프로젝트 생성 (하위폴더 없이 설치)  
+  `yarn create next-app --typescript .`  
+  `yarn add scss`
 
-2. storybook cli 로 추가
-  npx -p @storybook/cli sb init --type react
-  yarn storybook
-  https://localhost:6006
+2. storybook cli 로 추가  
+  `npx -p @storybook/cli sb init --type react`  
+  `yarn storybook`  
+  `https://localhost:6006`
 
 3. .storybook/main.js 에서 모듈 추가
+```
   "addons": [
     "@storybook/addon-designs",
   ]
+```
 
-4. Figma 파일 만들고 추가할 버튼 프레임 선택해서 copy link로 URL 복사
+4. Figma 파일 만들고 추가할 버튼 프레임 선택해서 copy link로 URL 복사  
   https://www.figma.com/file/lGYeZoaiM1pDzWxHBvqiXa/oncofe?node-id=2%3A7
 
 5. Button.stories.tsx
-```
+```js
   // 1. withDesign import
   import { withDesign } from 'storybook-addon-designs';
 
@@ -26,7 +28,6 @@
   export default {
     title: 'Example/Button',
     component: Button,
-    // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
       backgroundColor: { control: 'color' },
     },
@@ -44,7 +45,7 @@
 
 6. components 디렉토리에 컴포넌트별로 나눠서 관리
 
-6-1. 기존 story 경로 수정
+6-1. 기존 story 경로 수정  
   .storybook/main.js 에서 
 
   ```js
@@ -66,37 +67,32 @@
   ```
 
 6-2. 컴포넌트 폴더 생성 후 파일이동
+```
   button/
     button.css
     Button.stories.tsx
     Button.tsx
+```
 
 ---
 
 # Initialize server
 
 
+- 크로마틱 추가해서 배포하기 : https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/
 
-https://github.com/oncodev/cupfe
-
-
-
-
-
-크로마틱 추가해서 배포하기 : https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/
-
-깃헙액션 추가해서 배포하기 : https://budiirawan.com/how-to-publish-storybook-github-pages/
-
+- 깃헙액션 추가해서 배포하기 : https://budiirawan.com/how-to-publish-storybook-github-pages/
 
 7. Storybook 배포하기 
 
 7.0 깃허브 리포 Settings에서 pages에 페이지 활성화하기
+
 https://oncodev.github.io/cupfe/
 
 
 7.1 수동 배포하기
 - 깃허브 페이지에 수동으로 배포할때는 `yarn add gh-pages -D`
-- packages.json 에 deploy-storybook 추가
+- packages.json 에 `deploy-storybook` 추가
 
 ```json
 "scripts": {
@@ -106,6 +102,7 @@ https://oncodev.github.io/cupfe/
 ```
 
 다음과 같이 실행
+
 ```bash
 $ yarn run build-storybook
 $ ls -alh storybook-static
@@ -128,7 +125,5 @@ $ yarn run deploy-storybook
 - 브랜치 만들기 : `git checkout -b gh-pages`
 - 스토리북 빌드 : `yarn build-storybook`
 - 디렉토리 생성 : `.github/workflows/storybook.yml`
-
-
 
 
